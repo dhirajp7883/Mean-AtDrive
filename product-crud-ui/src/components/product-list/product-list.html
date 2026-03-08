@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="header">
+    <h2>Product CRUD Operations</h2>
+    <button class="add-btn" (click)="openCreateModal()">Add Product</button>
+  </div>
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.description }}</td>
+
+          <td class="actions">
+            <button class="edit-btn" (click)="openEditModal(product)">Edit</button>
+            <button class="delete-btn"(click)="deleteProduct(product._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <div class="modal-backdrop" *ngIf="isModalOpen">
+    <div class="modal">
+      <h2>{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h2>
+      <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" formControlName="price">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea formControlName="description"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="save-btn">{{ isEditMode ? 'Update' : 'Create' }}</button>
+          <button type="button" class="cancel-btn"(click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

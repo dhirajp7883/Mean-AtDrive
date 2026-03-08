@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+product-crud-api/node_modules/
+product-crud-ui/node_modules/
+
+# Environment variables
+.env
+product-crud-api/.env
+
+# Build files
+product-crud-ui/dist/
+product-crud-ui/.angular/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

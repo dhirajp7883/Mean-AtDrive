@@ -1,0 +1,28 @@
+.navbar {
+  background-color: #343a40;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 25px;
+      display: block;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #495057;
+      }
+
+      &.active {
+        background-color: #628bb7;
+      }
+    }
+  }
+}

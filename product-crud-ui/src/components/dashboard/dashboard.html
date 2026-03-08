@@ -1,0 +1,88 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Weather Dashboard</h1>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <input 
+      type="text" 
+      [(ngModel)]="searchCity" 
+      placeholder="Enter city name (e.g., Mumbai, Pune, Delhi)"
+      (keyup.enter)="onSearch()"
+      class="search-input"
+    />
+    <button (click)="onSearch()" class="search-btn">Search Weather</button>
+  </div>
+
+  <!-- Loading and Error States -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading weather data...</p>
+  </div>
+  
+  <div *ngIf="error && !loading" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Weather Display -->
+  <div class="weather-section" *ngIf="weatherData && !loading">
+    <div class="weather-card">
+      <!-- Location Info -->
+      <div class="location-header">
+        <h2>{{ weatherData.location.name }}, {{ weatherData.location.country }}</h2>
+        <p class="coordinates">{{ weatherData.location.latitude }}°N, {{ weatherData.location.longitude }}°E</p>
+      </div>
+
+      <!-- Main Weather Info -->
+      <div class="weather-main">
+        <div class="temperature-display">
+          <div class="temp-large">{{ weatherData.current.temperature }}°C</div>
+          <div class="weather-description">{{ weatherData.current.weather_description }}</div>
+          <div class="feels-like">Feels like {{ weatherData.current.feels_like }}°C</div>
+        </div>
+
+        <div class="weather-icon">
+          <span class="icon" [class.day]="weatherData.current.is_day" [class.night]="!weatherData.current.is_day">
+            {{ weatherData.current.is_day ? '☀️' : '🌙' }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Weather Details Grid -->
+      <div class="weather-details">
+        <div class="detail-item">
+          <div class="detail-icon">💧</div>
+          <div class="detail-info">
+            <div class="detail-label">Humidity</div>
+            <div class="detail-value">{{ weatherData.current.humidity }}%</div>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">💨</div>
+          <div class="detail-info">
+            <div class="detail-label">Wind Speed</div>
+            <div class="detail-value">{{ weatherData.current.wind_speed }} km/h</div>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">☁️</div>
+          <div class="detail-info">
+            <div class="detail-label">Cloud Cover</div>
+            <div class="detail-value">{{ weatherData.current.cloud_cover }}%</div>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">🌧️</div>
+          <div class="detail-info">
+            <div class="detail-label">Precipitation</div>
+            <div class="detail-value">{{ weatherData.current.precipitation }} mm</div>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+</div>

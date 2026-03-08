@@ -1,0 +1,248 @@
+.dashboard-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+  }
+}
+
+// Search Section
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+
+  .search-input {
+    flex: 1;
+    max-width: 500px;
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #007bff;
+    }
+  }
+
+  .search-btn {
+    padding: 12px 30px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+// Loading State
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Error Message
+.error-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 10px;
+  color: #842029;
+  margin-bottom: 20px;
+
+  p {
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+// Weather Section
+.weather-section {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 40px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+}
+
+.location-header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h2 {
+    font-size: 32px;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+  }
+
+  .coordinates {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+  }
+}
+
+.weather-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  .temperature-display {
+    flex: 1;
+
+    .temp-large {
+      font-size: 72px;
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .weather-description {
+      font-size: 24px;
+      margin-bottom: 5px;
+      text-transform: capitalize;
+    }
+
+    .feels-like {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  }
+
+  .weather-icon {
+    .icon {
+      font-size: 80px;
+      display: block;
+    }
+  }
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+
+  .detail-icon {
+    font-size: 36px;
+  }
+
+  .detail-info {
+    .detail-label {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+
+    .detail-value {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
+
+.api-info {
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-card {
+    padding: 20px;
+  }
+
+  .weather-main {
+    flex-direction: column;
+    text-align: center;
+
+    .temperature-display {
+      margin-bottom: 20px;
+
+      .temp-large {
+        font-size: 56px;
+      }
+
+      .weather-description {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .weather-details {
+    grid-template-columns: 1fr;
+  }
+
+  .search-section {
+    flex-direction: column;
+
+    .search-input {
+      max-width: 100%;
+    }
+  }
+}

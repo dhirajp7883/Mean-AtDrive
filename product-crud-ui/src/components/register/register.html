@@ -1,0 +1,33 @@
+<div class="register-wrapper">
+
+  <div class="register-card">
+
+    <h2>Create Account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" formControlName="username">
+
+        <span *ngIf="submitted && f['username'].errors">
+          Username must be at least 3 characters
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" formControlName="password">
+
+        <span *ngIf="submitted && f['password'].errors">
+          Password must be at least 6 characters
+        </span>
+      </div>
+      
+      <button type="submit">Register</button>
+
+    </form>
+
+  </div>
+
+</div>
